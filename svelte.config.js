@@ -14,7 +14,7 @@ const config = {
 			crawl: true,
 			enabled: true,
 			onError: 'continue',
-			pages: ['*'],
+			entries: ['*'],
 		},
 
 		// Comment the paths if wants to run in dev mode.

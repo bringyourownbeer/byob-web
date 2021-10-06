@@ -1,7 +1,8 @@
 backend:
   name: git-gateway
 
-local_backend: true
+local_backend:
+  allowed_hosts: ["172.23.221.62"]
 
 i18n:
   structure: multiple_files
@@ -10,3 +11,13 @@ i18n:
 
 media_folder: "static/uploads"
 public_folder: "/uploads"
+
+collections:
+  - name: about
+    label: About
+    folder: content/about
+    i18n: true
+    create: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string", i18n: true }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
