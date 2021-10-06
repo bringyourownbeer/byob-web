@@ -1,0 +1,12 @@
+backend:
+  name: git-gateway
+
+local_backend: true
+
+i18n:
+  structure: multiple_files
+  locales: [en, de]
+  default_locale: en
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
