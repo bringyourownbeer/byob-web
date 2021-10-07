@@ -20,7 +20,7 @@
 </svelte:head>
 
 <h1 class="title">{mdPage.metadata.title}</h1>
-<p class="info"><a href="https://github.com/zhuzilin">zhuzilin</a></p>
+<p class="info">...</p>
 {@html mdPage.content}
 
 <style lang="scss">

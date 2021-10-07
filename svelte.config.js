@@ -1,5 +1,5 @@
 import sveltePreprocess from 'svelte-preprocess';
-import staticAdapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-static';
 //import netlifyAdapter from '@sveltejs/adapter-netlify'
 
 
@@ -9,13 +9,8 @@ const config = {
 	// for more information about preprocessors
 	preprocess: sveltePreprocess(),
 	kit: {
-		adapter: staticAdapter(),
-		/*prerender: {
-			crawl: true,
-			enabled: true,
-			onError: 'continue',
-			entries: ['*'],
-		},*/
+		adapter: adapter(),
+		appDir: 'internal',
 
 		// Comment the paths if wants to run in dev mode.
 		paths: {
@@ -27,8 +22,8 @@ const config = {
 		target: '#svelte',
 
 		vite: {
-			ssr: {
-				noExternal: ['svelte-hmr']
+			optimizeDeps: {
+				include: ['string-strip-html', 'lodash.isplainobject', 'lodash.trim', 'lodash.clonedeep', 'lodash.without', 'html-entities']
 			}
 		}
 

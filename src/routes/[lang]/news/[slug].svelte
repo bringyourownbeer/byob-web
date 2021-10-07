@@ -21,7 +21,7 @@
 </svelte:head>
 
 <h1 class="title">{post.metadata.title}</h1>
-<p class="info"><a href="https://github.com/zhuzilin">zhuzilin</a> {date}</p>
+<p class="info">{date}</p>
 {@html post.content}
 
 <style lang="scss">

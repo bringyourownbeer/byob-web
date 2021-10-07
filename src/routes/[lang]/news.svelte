@@ -16,15 +16,16 @@
 </script>
 
 <svelte:head>
-  <title>Home</title>
+  <title>News</title>
 </svelte:head>
 
 <div>
-  <h1>SvelteKit Blog</h1>
+  <h1>News</h1>
   <p class="info">{posts.length} posts {lang}.</p>
   {#each posts as post}
     <a href={`${base}/${lang}/news/${post.slug}`}>
       <h2 class="title">{post.metadata.title}</h2>
+      <p>{post.metadata.date}</p>
       <p>{post.metadata.excerpt}</p>
     </a>
   {/each}

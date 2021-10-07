@@ -1,15 +1,17 @@
 <script context="module">
   import { base } from "$app/paths";
 
-  export async function load({ page }) {
+  export async function load({ page, fetch }) {
     const lang = page.params.lang;
+    const homePage = await fetch(`${base}/${lang}/home.json`).then((r) => r.json());
     return {
-      props: { lang },
+      props: { homePage, lang },
     };
   }
 </script>
 
 <script>
+  export let homePage;
   export let lang;
 </script>
 
@@ -19,6 +21,8 @@
 
 <div>
   <h1>SvelteKit Blog</h1>
+  {@html homePage.content}
+
   <a href="{base}/{lang}/news">News</a>
 </div>
 

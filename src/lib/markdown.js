@@ -8,6 +8,7 @@ import frontmatter from 'remark-frontmatter';
 import highlight from 'rehype-highlight';
 import yaml from 'js-yaml';
 import dayjs from 'dayjs';
+import { stripHtml } from "string-strip-html";
 
 let parser = unified()
   .use(parse)
@@ -28,11 +29,14 @@ export function process(filename) {
     metadata.date = dayjs(metadata.date).format("D MMM, YYYY");
   }
   let content = runner.stringify(runner.runSync(tree));
+  let cleanContent = stripHtml(content).result;
+  metadata.excerpt = cleanContent.length < 100 ? cleanContent.substr(0, 100) : cleanContent.substr(0, 100) + "...";
+
   if (!metadata) {
     metadata = {
-      title: "Error!",
+      title: "???",
       date: "?",
-      excerpt: "Missing Frontmatter! Expected at least a title and a date!"
+      excerpt: "..."
     };
     content = "Missing Frontmatter! Expected at least a title and a date!"
   }

@@ -15,5 +15,8 @@
 		"src/**/*.d.ts",
 		"src/**/*.js",
 		"src/**/*.svelte"
+	],
+	"exclude": [
+		"/jsconfig.json"
 	]
 }
