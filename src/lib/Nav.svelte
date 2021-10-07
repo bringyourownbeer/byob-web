@@ -1,14 +1,14 @@
 <script>
-  import { base } from '$app/paths';
+  import { base } from "$app/paths";
+  import { locale } from "$lib/i18n";
 </script>
 
 <div>
   <nav>
     <a href="{base}/"><h3 class="home">HOME</h3></a>
-    <a href="{base}/about"><h3 class="about">about</h3></a>
+    <a href="{base}/{$locale}/about"><h3 class="about">about</h3></a>
   </nav>
 </div>
-
 
 <style lang="scss">
   nav {
@@ -19,16 +19,16 @@
 
   a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
   }
 
-  h3{
+  h3 {
     margin-bottom: 0px;
     &.home {
       color: #444;
     }
     &.about {
-      color: #FF3E00;
+      color: #ff3e00;
     }
   }
 </style>

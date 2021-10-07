@@ -4,24 +4,24 @@
   export async function load({ page, fetch }) {
     const lang = page.params.lang;
     const md = page.params.md;
-    const aboutPage = await fetch(`${base}/${lang}/${md}.json`).then((r) => r.json());
+    const mdPage = await fetch(`${base}/${lang}/${md}.json`).then((r) => r.json());
     return {
-      props: { aboutPage },
+      props: { mdPage },
     };
   }
 </script>
 
 <script>
-  export let aboutPage;
+  export let mdPage;
 </script>
 
 <svelte:head>
-  <title>{aboutPage.metadata.title}</title>
+  <title>{mdPage.metadata.title}</title>
 </svelte:head>
 
-<h1 class="title">{aboutPage.metadata.title}</h1>
+<h1 class="title">{mdPage.metadata.title}</h1>
 <p class="info"><a href="https://github.com/zhuzilin">zhuzilin</a></p>
-{@html aboutPage.content}
+{@html mdPage.content}
 
 <style lang="scss">
   h1.title {

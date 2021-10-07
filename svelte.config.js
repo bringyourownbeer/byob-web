@@ -1,6 +1,6 @@
 import sveltePreprocess from 'svelte-preprocess';
-import static_adapter from '@sveltejs/adapter-static';
-import netlifyAdapter from '@sveltejs/adapter-netlify'
+import staticAdapter from '@sveltejs/adapter-static';
+//import netlifyAdapter from '@sveltejs/adapter-netlify'
 
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -9,13 +9,13 @@ const config = {
 	// for more information about preprocessors
 	preprocess: sveltePreprocess(),
 	kit: {
-		adapter: netlifyAdapter(),
-		prerender: {
+		adapter: staticAdapter(),
+		/*prerender: {
 			crawl: true,
 			enabled: true,
 			onError: 'continue',
 			entries: ['*'],
-		},
+		},*/
 
 		// Comment the paths if wants to run in dev mode.
 		paths: {
