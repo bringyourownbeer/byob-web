@@ -11,7 +11,12 @@ const config = {
 		appDir: 'internal',
 
 		prerender: {
-			entries: ["/"]
+			crawl: true,
+			entries: [
+				"*",
+				"/de",
+				"/en"
+			]
 		},
 
 		// Comment the paths if wants to run in dev mode.
