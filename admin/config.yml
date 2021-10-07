@@ -1,0 +1,53 @@
+backend:
+  name: git-gateway
+
+local_backend:
+  allowed_hosts: ["172.23.214.118"]
+
+i18n:
+  structure: multiple_files
+  locales: [en, de]
+  default_locale: en
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: about
+    label: Über
+    folder: content/about
+    i18n: true
+    create: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string", i18n: true }
+      - { label: "Inhalt", name: "body", widget: "markdown", i18n: true }
+
+  - name: home
+    label: Startseite
+    folder: content/home
+    i18n: true
+    create: false
+    fields:
+      - { label: "Titel", name: "title", widget: "string", i18n: true }
+      - { label: "Inhalt", name: "body", widget: "markdown", i18n: true }
+
+  - name: news
+    label: Newsbeitrag
+    folder: content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "news/{{year}}-{{month}}-{{day}}-{{slug}}"
+    i18n: true
+    fields:
+      - { label: "Titel", name: "title", widget: "string", i18n: true }
+      - { label: "Datum", name: "date", widget: "datetime", i18n: "duplicate" }
+      - {
+          label: "Tags",
+          name: "tags",
+          widget: "list",
+          required: false,
+          i18n: true,
+          default: ["news"],
+        }
+      - { label: "Bild", name: "image", widget: "image", allow_multiple: false, required: false }
+      - { label: "Inhalt", name: "body", widget: "markdown", i18n: true }
