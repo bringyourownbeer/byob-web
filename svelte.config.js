@@ -1,7 +1,5 @@
 import sveltePreprocess from 'svelte-preprocess';
 import adapter from '@sveltejs/adapter-static';
-//import netlifyAdapter from '@sveltejs/adapter-netlify'
-
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -11,6 +9,10 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		appDir: 'internal',
+
+		prerender: {
+			entries: ["/"]
+		},
 
 		// Comment the paths if wants to run in dev mode.
 		paths: {
