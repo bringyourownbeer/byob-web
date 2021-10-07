@@ -1,12 +1,12 @@
 <script context="module">
-  import { base } from '$app/paths';
+  import { base } from "$app/paths";
 
   export async function load({ page, fetch }) {
+    const lang = page.params.lang;
     const slug = page.params.slug;
-    const post = await fetch(`${base}/${slug}.json`)
-        .then((r) => r.json());
+    const post = await fetch(`${base}/${lang}/news/${slug}.json`).then((r) => r.json());
     return {
-      props: { post }
+      props: { post },
     };
   }
 </script>
