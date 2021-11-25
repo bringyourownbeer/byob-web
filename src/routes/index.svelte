@@ -1,11 +1,13 @@
 <script context="module">
   import { locale } from "$lib/i18n";
-  import { get as storeGet } from "svelte/store";
+  import { get } from "svelte/store";
 
-  export async function get() {
+  const lang = get(locale);
+
+  export async function load() {
     return {
-      headers: { Location: `${storeGet(locale)}` },
       status: 302,
+      redirect: `/${lang}`,
     };
   }
 </script>

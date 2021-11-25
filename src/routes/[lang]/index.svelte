@@ -1,8 +1,18 @@
 <script context="module">
   import { base } from "$app/paths";
+  import { locale } from "$lib/i18n";
+  import { get } from "svelte/store";
 
   export async function load({ page, fetch }) {
     const lang = page.params.lang;
+
+    if (lang !== "de" && lang !== "en") {
+      return {
+        status: 302,
+        redirect: `/${get(locale)}`,
+      };
+    }
+
     const homePage = await fetch(`${base}/${lang}/home.json`).then((r) => r.json());
     return {
       props: { homePage, lang },
@@ -23,7 +33,7 @@
   <h1>SvelteKit Blog</h1>
   {@html homePage.content}
 
-  <a href="{base}/{lang}/news">News</a>
+  <a sveltekit:prefetch href="{base}/{lang}/news">News</a>
 </div>
 
 <style lang="scss">
