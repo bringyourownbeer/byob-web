@@ -1,13 +1,13 @@
 <script context="module">
-  import { locale } from "$lib/i18n";
-  import { get } from "svelte/store";
+  export const ssr = false;
 
-  const lang = get(locale);
+  import { lang } from "$lib/store";
+  import { get } from "svelte/store";
 
   export async function load() {
     return {
       status: 302,
-      redirect: `/${lang}`,
+      redirect: `/${get(lang)}`,
     };
   }
 </script>

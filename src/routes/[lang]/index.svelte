@@ -1,15 +1,16 @@
 <script context="module">
+  export const ssr = false;
+
   import { base } from "$app/paths";
-  import { locale } from "$lib/i18n";
-  import { get } from "svelte/store";
 
-  export async function load({ page, fetch }) {
-    const lang = page.params.lang;
+  export async function load({ params, fetch }) {
+    const lang = params.lang;
 
+    // invalid language
     if (lang !== "de" && lang !== "en") {
       return {
         status: 302,
-        redirect: `/${get(locale)}`,
+        redirect: `/`,
       };
     }
 

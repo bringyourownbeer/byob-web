@@ -1,8 +1,9 @@
 <script>
-  import { locale, switchLocale } from "$lib/i18n";
+  import { lang } from "./store";
+  import { setLang } from "$lib/i18n";
 
   function test() {
-    $locale == "en" ? switchLocale("de") : switchLocale("en");
+    $lang == "en" ? setLang("de") : setLang("en");
   }
 </script>
 

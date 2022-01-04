@@ -1,24 +1,19 @@
-// https://www.davidwparker.com/posts/dark-mode-in-sveltekit-with-and-without-javascript
-
 import { writable } from 'svelte/store';
+import { browser } from '$app/env';
 
-const createWritableStore = (key, startValue) => {
-    const { subscribe, set } = writable(startValue);
+const DEFAULT_PAGE_LANGUAGE = "de";
 
-    return {
-        subscribe,
-        set,
-        useLocalStorage: () => {
-            const json = localStorage.getItem(key);
-            if (json) {
-                set(JSON.parse(json));
-            }
-
-            subscribe(current => {
-                localStorage.setItem(key, JSON.stringify(current));
-            });
-        }
-    };
+export const getBrowserLang = () => {
+    if (browser) {
+        return window.navigator.language.substring(0, 2) ?? DEFAULT_PAGE_LANGUAGE;
+    }
+    return DEFAULT_PAGE_LANGUAGE;
 }
 
-export const lang = createWritableStore('lang', 'en');
+//const storedLang = localStorage.getItem(`byob-lang`);
+export const lang = writable(getBrowserLang());
+lang.subscribe(value => {
+    if (browser && window.localStorage) {
+        window.localStorage.setItem(`byob-lang`, value)
+    }
+})

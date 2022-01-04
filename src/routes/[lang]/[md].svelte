@@ -1,9 +1,9 @@
 <script context="module">
   import { base } from "$app/paths";
 
-  export async function load({ page, fetch }) {
-    const lang = page.params.lang;
-    const md = page.params.md;
+  export async function load({ params, fetch }) {
+    const lang = params.lang;
+    const md = params.md;
     const mdPage = await fetch(`${base}/${lang}/${md}.json`).then((r) => r.json());
     return {
       props: { mdPage },

@@ -1,12 +1,12 @@
 <script>
   import { base } from "$app/paths";
-  import { locale } from "$lib/i18n";
+  import { lang } from "$lib/store";
 </script>
 
 <div>
   <nav>
     <a href="{base}/"><h3 class="home">HOME</h3></a>
-    <a href="{base}/{$locale}/about"><h3 class="about">about</h3></a>
+    <a href="{base}/{$lang}/about"><h3 class="about">about</h3></a>
   </nav>
 </div>
 
