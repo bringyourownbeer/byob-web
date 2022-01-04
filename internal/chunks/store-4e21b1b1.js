@@ -1,0 +1,1 @@
+import{C as a}from"./vendor-f0214d86.js";const n="de",r=()=>{var o;return(o=window.navigator.language.substring(0,2))!=null?o:n},t=a(r());t.subscribe(o=>{window.localStorage&&window.localStorage.setItem("byob-lang",o)});export{t as l};

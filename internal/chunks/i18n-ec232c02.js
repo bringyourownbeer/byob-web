@@ -1,1 +1,0 @@
-import{C as e}from"./vendor-7dbd12eb.js";import{r}from"./singletons-12a22614.js";const s=r,n=a;async function a(o,t){return s.goto(o,t,[])}const c=e("en");function u(o){let t=location.pathname.split("/");t[1]&&(t[1]=="en"||t[1]=="de")&&(t[1]=o,c.set(o)),n(`${t.join("/")}`,{replaceState:!0,noscroll:!0,keepfocus:!0})}export{c as l,u as s};
